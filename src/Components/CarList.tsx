@@ -1,24 +1,26 @@
+import { useEffect, useState } from "react";
 import "../Styles/CarList.css";
-
+import { Car } from "../Models/Car";
+import axios from 'axios';
 export default function CarList() {
-    const cars = [
-        { id: 1, brand: "BMW", model: "M3", year: 2020 },
-        { id: 2, brand: "Audi", model: "A4", year: 2019 },
-        { id: 3, brand: "Mercedes", model: "C200", year: 2021 }
-    ];
+    const [cars, setCars] = useState<Car[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
+    useEffect(() => {
+        setLoading(true);
+        axios.get<Car[]>('https://localhost:7290/api/cars/').then((response) => {
+            setCars(response.data);
+        })
+        .catch(() => {
+            setError('Error fetching cars');
+        })
+        .then(() => setLoading(false))
+        .catch(() => setLoading(false));
+    },[]);
+    if (loading) return <p>Loading cars...</p>;
+    if (error) return <p>{error}</p>;
     return (
-        <div className="car-list">
-            <h2>Lista samochodów</h2>
-
-            <ul>
-                {cars.map(car => (
-                    <li key={car.id}>
-                        <span>{car.brand} {car.model}</span>
-                        <span className="year">{car.year}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+        <div><p>działa</p></div>
+    )
 }
