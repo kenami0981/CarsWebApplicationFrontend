@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import "../Styles/CarList.css";
 import { Car, FuelTypeMap } from "../Models/Car";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 export default function CarList() {
+    
     const [cars, setCars] = useState<Car[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -26,14 +28,10 @@ export default function CarList() {
             <ul>
                 {cars.map(car =>(
                     <li key={car.id}>
-                        <h2>{car.brand} {car.model}</h2>
-                        <p>Doors: {car.doorsNumber}</p>
-                        <p>Luggage Capacity: {car.luggageCapacity}</p>
-                        <p>Engine Capacity: {car.engineCapacity}</p>
-                        <p>Fuel Type: {FuelTypeMap[parseInt(car.fuelType)]}</p>
-                        <p>Production Date: {new Date(car.productionDate).toLocaleDateString()}</p>
-                        <p>Fuel Consuption: {car.carFuelConsumption}</p>
-                        <p>Body Type: {car.bodyType}</p>
+                        <Link to={`/cars/${car.id}`}>
+                            <h2>{car.brand} {car.model}</h2>
+                        </Link>
+                        
                     </li>
                 ))}
             </ul>
