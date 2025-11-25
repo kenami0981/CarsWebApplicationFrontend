@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Styles/CarList.css";
-import { Car } from "../Models/Car";
+import { Car, FuelTypeMap } from "../Models/Car";
 import axios from 'axios';
 export default function CarList() {
     const [cars, setCars] = useState<Car[]>([]);
@@ -21,6 +21,22 @@ export default function CarList() {
     if (loading) return <p>Loading cars...</p>;
     if (error) return <p>{error}</p>;
     return (
-        <div><p>działa</p></div>
+        <div>
+            <h1>Car List</h1>
+            <ul>
+                {cars.map(car =>(
+                    <li key={car.id}>
+                        <h2>{car.brand} {car.model}</h2>
+                        <p>Doors: {car.doorsNumber}</p>
+                        <p>Luggage Capacity: {car.luggageCapacity}</p>
+                        <p>Engine Capacity: {car.engineCapacity}</p>
+                        <p>Fuel Type: {FuelTypeMap[parseInt(car.fuelType)]}</p>
+                        <p>Production Date: {new Date(car.productionDate).toLocaleDateString()}</p>
+                        <p>Fuel Consuption: {car.carFuelConsumption}</p>
+                        <p>Body Type: {car.bodyType}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 }

@@ -4,6 +4,12 @@ export enum FuelType {
     Diesel = "Diesel",
     LPG = "LPG"
 }
+export const FuelTypeMap: Record<number, FuelType> = {
+    0: FuelType.Petrol,
+    1: FuelType.Hybrid,
+    2: FuelType.Diesel,
+    3: FuelType.LPG
+};
 
 export enum BodyType {
     Hatchback = "Hatchback",
@@ -14,13 +20,13 @@ export enum BodyType {
 }
 export interface Car {
     id: number;
-    Brand: string;
-    Model: string;
-    DoorsNumber: number;
-    LuggageCapacity: number;
-    EngineCapacity: number;
-    FuelType: FuelType;
-    ProductionDate: Date;
-    CarFuelConsumption: number;
-    BodyType: BodyType;
+    brand: string;
+    model: string;
+    doorsNumber: number;
+    luggageCapacity: number;
+    engineCapacity: number;
+    fuelType: FuelType;
+    productionDate: Date;
+    carFuelConsumption: number;
+    bodyType: BodyType;
 }
