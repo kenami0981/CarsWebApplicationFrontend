@@ -1,4 +1,4 @@
-import "./CarList.css";
+import "../Styles/CarList.css";
 
 export default function CarList() {
     const cars = [

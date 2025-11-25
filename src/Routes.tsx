@@ -1,9 +1,9 @@
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
 import App from "./App";
-import CarList from "./CarList";
-import CarDetails from "./CarDetails";
-import NotFound from "./NotFound";
-import CarForm from "./CarForm";
+import CarList from "./Components/CarList";
+import CarDetails from "./Components/CarDetails";
+import NotFound from "./Components/NotFound";
+import CarForm from "./Components/CarForm";
 
 export const routes: RouteObject[] = [
     {
