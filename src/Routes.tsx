@@ -13,6 +13,7 @@ export const routes: RouteObject[] = [
             {path: 'cars', element: <CarList />},
             {path: 'cars/:id', element: <CarDetails />},
             {path: 'edit/:id', element: <CarForm />},
+            {path: 'add-car', element: <CarForm />},
             {path: 'not-found', element: <NotFound />},
             {path: '*', element: <Navigate replace to='/not-found' />}
 

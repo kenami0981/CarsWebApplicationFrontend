@@ -18,6 +18,13 @@ export enum BodyType {
     SUV = "SUV",
     Roadster = "Roadster"
 }
+export const BodyTypeMap: Record<number, BodyType> = {
+    0: BodyType.Hatchback,
+    1: BodyType.Sedan,
+    2: BodyType.Kombi,
+    3: BodyType.SUV,
+    4: BodyType.Roadster
+};
 export interface Car {
     id: number;
     brand: string;

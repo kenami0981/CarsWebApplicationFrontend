@@ -6,7 +6,8 @@ export default function NavBar() {
         <nav>
             <ul>
                 <li>
-                    <NavLink to="/cars">Cars</NavLink>
+                    <NavLink to="/cars">CARS</NavLink>
+                    <NavLink to="/add-car">ADD CAR</NavLink>
                 </li>
                 
             </ul>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Car, FuelTypeMap } from "../Models/Car";
+import { BodyTypeMap, Car, FuelTypeMap } from "../Models/Car";
 
 export default function CarDetails() {
     const { id } = useParams();
@@ -44,7 +44,7 @@ export default function CarDetails() {
             <p>Fuel Type: {FuelTypeMap[parseInt(car.fuelType)]}</p>
             <p>Production Date: {new Date(car.productionDate).toLocaleDateString()}</p>
             <p>Fuel Consuption: {car.carFuelConsumption}</p>
-            <p>Body Type: {car.bodyType}</p>
+            <p>Body Type: {BodyTypeMap[parseInt(car.bodyType)]}</p>
 
             <button onClick={handleDelete}>Delete</button>
 
