@@ -5,10 +5,10 @@ export enum FuelType {
     LPG = "LPG"
 }
 export const FuelTypeMap: Record<number, FuelType> = {
-    0: FuelType.Petrol,
-    1: FuelType.Hybrid,
-    2: FuelType.Diesel,
-    3: FuelType.LPG
+    1: FuelType.Petrol,
+    2: FuelType.Hybrid,
+    3: FuelType.Diesel,
+    4: FuelType.LPG
 };
 
 export enum BodyType {
@@ -19,14 +19,14 @@ export enum BodyType {
     Roadster = "Roadster"
 }
 export const BodyTypeMap: Record<number, BodyType> = {
-    0: BodyType.Hatchback,
-    1: BodyType.Sedan,
-    2: BodyType.Kombi,
-    3: BodyType.SUV,
-    4: BodyType.Roadster
+    1: BodyType.Hatchback,
+    2: BodyType.Sedan,
+    3: BodyType.Kombi,
+    4: BodyType.SUV,
+    5: BodyType.Roadster
 };
 export interface Car {
-    id: number;
+    id: string;
     brand: string;
     model: string;
     doorsNumber: number;
