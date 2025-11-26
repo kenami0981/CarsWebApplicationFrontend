@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Car } from "../Models/Car";
+import "../Styles/CarForm.css";
 
 export default function CarForm() {
     const navigate = useNavigate();
@@ -42,10 +43,10 @@ export default function CarForm() {
     };
 
     return (
-        <div>
+        <div className="addcar-container">
             <h1>Add New Car</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="addcar-form">
                 <label>Brand:</label>
                 <input
                     name="brand"
@@ -140,10 +141,10 @@ export default function CarForm() {
                     <option value={5}>Roadster</option>
                 </select>
 
-                <button type="submit">Add Car</button>
+                <button type="submit" className="primary-btn">Add Car</button>
             </form>
 
-            <button onClick={() => navigate("/cars")}>Back</button>
+            <button onClick={() => navigate("/cars")} className="back-btn">Back</button>
         </div>
     );
 }

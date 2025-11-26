@@ -1,0 +1,102 @@
+/* -------------------------------------- */
+/*              CONTAINER                 */
+/* -------------------------------------- */
+
+.addcar-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    color: #e0e0e0;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.addcar-container h1 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #a8c7ff;
+}
+
+/* -------------------------------------- */
+/*                  FORM                  */
+/* -------------------------------------- */
+
+.addcar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.addcar-form label {
+    text-align: left;
+    font-weight: 500;
+    color: #cfd9f1;
+}
+
+/* INPUTS & SELECTS */
+
+.addcar-form input,
+.addcar-form select {
+    padding: 10px 12px;
+    background: #2b2b2b;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: 0.25s ease;
+}
+
+.addcar-form input:focus,
+.addcar-form select:focus {
+    outline: none;
+    border-color: #0078ff;
+    box-shadow: 0 0 6px rgba(0, 120, 255, 0.4);
+}
+
+/* -------------------------------------- */
+/*                BUTTONS                 */
+/* -------------------------------------- */
+
+.primary-btn {
+    margin-top: 12px;
+    padding: 12px 18px;
+    background: #0078ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.primary-btn:hover {
+    background: #0a8aff;
+    box-shadow: 0 0 10px rgba(0, 120, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #3a3a3a;
+    color: #ddd;
+    border: 1px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    background: #4a4a4a;
+    border-color: #0078ff;
+    color: #a8c7ff;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
