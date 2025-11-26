@@ -23,15 +23,16 @@ export default function CarList() {
     if (loading) return <p>Loading cars...</p>;
     if (error) return <p>{error}</p>;
     return (
-        <div>
-            <h1>Car List</h1>
-            <ul>
-                {cars.map(car =>(
-                    <li key={car.id}>
-                        <Link to={`/cars/${car.id}`}>
+        <div className="car-list-wrapper">
+            <h1 className="car-list-title">Car List</h1>
+
+            <ul className="car-list">
+                {cars.map(car => (
+                    <li key={car.id} className="car-card">
+                        <Link to={`/cars/${car.id}`} className="car-link">
                             <h2>{car.brand} {car.model}</h2>
+                            <span className="car-arrow">→</span>
                         </Link>
-                        
                     </li>
                 ))}
             </ul>
