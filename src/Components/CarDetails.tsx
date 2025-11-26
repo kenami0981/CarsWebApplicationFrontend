@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { BodyType, BodyTypeMap, Car, FuelType, FuelTypeMap } from "../Models/Car";
+import "../Styles/CarDetails.css"
 
 export default function CarDetails() {
 
@@ -78,22 +79,36 @@ export default function CarDetails() {
 
     return (
         <div>
-            <h1>{car.brand} {car.model}</h1>
+            <h1 className="title">CAR DETAILS</h1>
 
             {!isEditing ? (
                 <>
-                    <p>Doors: {car.doorsNumber}</p>
-                    <p>Luggage Capacity: {car.luggageCapacity}</p>
-                    <p>Engine Capacity: {car.engineCapacity}</p>
-                    <p>Fuel Type: {FuelTypeMap[parseInt(car.fuelType)]}</p>
-                    <p>Production Date: {new Date(car.productionDate).toLocaleDateString()}</p>
-                    <p>Fuel Consumption: {car.carFuelConsumption}</p>
-                    <p>Body Type: {BodyTypeMap[parseInt(car.bodyType)]}</p>
+                
+                    <div className="car-details-card">
+    <h1 className="details-title">
+        {car.brand} {car.model}
+    </h1>
 
-                    <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={handleDelete} style={{ marginLeft: "10px" }}>
-                        Delete
-                    </button>
+    <div className="details-grid">
+        <p><span>Doors:</span> {car.doorsNumber}</p>
+        <p><span>Luggage Capacity:</span> {car.luggageCapacity}</p>
+        <p><span>Engine Capacity:</span> {car.engineCapacity}</p>
+        <p><span>Fuel Type:</span> {FuelTypeMap[parseInt(car.fuelType)]}</p>
+        <p><span>Production Date:</span> {new Date(car.productionDate).toLocaleDateString()}</p>
+        <p><span>Fuel Consumption:</span> {car.carFuelConsumption}</p>
+        <p><span>Body Type:</span> {BodyTypeMap[parseInt(car.bodyType)]}</p>
+    </div>
+
+    <div className="details-buttons">
+        <button className="btn-edit" onClick={() => setIsEditing(true)}>
+            Edit
+        </button>
+
+        <button className="btn-delete" onClick={handleDelete}>
+            Delete
+        </button>
+    </div>
+</div>
                 </>
             ) : (
                 <>
@@ -189,7 +204,10 @@ export default function CarDetails() {
             )}
 
             <br /><br />
-            <Link to="/cars">← Back to Car List</Link>
+            <Link to="/cars" className="back-link">
+                Back to Car List
+            </Link>
+
         </div>
     );
 }
