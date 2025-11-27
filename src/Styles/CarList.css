@@ -24,22 +24,28 @@
     padding: 0;
 }
 
-/* Karta auta */
+
 .car-card {
     background: #2a2a2a;
     padding: 18px 25px;
     border-radius: 12px;
     transition: 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    /*box-shadow: 0 4px 10px #000000;*/
     opacity: 0;
     animation: slideUp 0.5s ease forwards;
 }
 
-/* Delikatny delay animacji dla każdego elementu */
+
 .car-card:nth-child(1) { animation-delay: 0.1s; }
 .car-card:nth-child(2) { animation-delay: 0.2s; }
 .car-card:nth-child(3) { animation-delay: 0.3s; }
 .car-card:nth-child(4) { animation-delay: 0.4s; }
+.car-card:nth-child(5) { animation-delay: 0.5s; }
+.car-card:nth-child(6) { animation-delay: 0.6s; }
+.car-card:nth-child(7) { animation-delay: 0.7s; }
+.car-card:nth-child(8) { animation-delay: 0.8s; }
+.car-card:nth-child(9) { animation-delay: 0.9s; }
+.car-card:nth-child(10) { animation-delay: 1.0s; }
 
 .car-card:hover {
     transform: translateY(-4px) scale(1.02);
@@ -47,7 +53,6 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
-/* Link */
 .car-link {
     text-decoration: none;
     color: #e0e0e0;
@@ -74,7 +79,6 @@
     transform: translateX(0);
 }
 
-/* Animacje */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

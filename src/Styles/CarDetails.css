@@ -1,7 +1,3 @@
-/* ---------------------------------------------- */
-/*  CAR DETAILS – PREMIUM DARK UI + GLASS SHINE   */
-/* ---------------------------------------------- */
-
 .car-details-card {
     background: #1f1f1f;
     padding: 30px;
@@ -13,18 +9,6 @@
     overflow: hidden;
     background-color: #2c2c2c;
     animation: fadeIn 0.5s ease forwards;
-}
-
-/* Shine effect */
-.car-details-card::before {
-    content: "";
-    position: absolute;
-    top: -120%;
-    left: -60%;
-    width: 50%;
-    height: 250%;
-    transform: skewX(-20deg);
-    opacity: 0;
 }
 
 .car-details-card:hover::before {
@@ -40,7 +24,7 @@
     color: #eaeaea;
 }
 
-/* Grid for car parameters */
+
 .details-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,7 +42,7 @@
     font-weight: 600;
 }
 
-/* Buttons */
+
 .details-buttons {
     display: flex;
     justify-content: center;
@@ -75,7 +59,6 @@
     transition: 0.3s ease;
 }
 
-/* EDIT button */
 .btn-edit {
     background: #0057ff;
     color: white;
@@ -87,7 +70,6 @@
     box-shadow: 0 0 18px rgba(0, 87, 255, 0.6);
 }
 
-/* DELETE button */
 .btn-delete {
     background: #c82333;
     color: white;
@@ -102,7 +84,7 @@
     display: flex;
     justify-self: center;
 }
-/* Animations */
+
 
 
 @keyframes fadeIn {
@@ -125,19 +107,109 @@
     left: 10px;
 }
 
-/* Strzałka */
+
 .back-link::before {
     content: "←";
     transition: transform 0.25s ease;
 }
 
-/* Hover efekt */
 .back-link:hover {
     color: #a7c8ff;
     text-shadow: 0 0 1px rgba(120, 170, 255, 0.6);
 }
 
-/* Animacja strzałki – przesuwa się  */
+
 .back-link:hover::before {
     transform: translateX(-4px);
+}
+
+
+.editcar-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    color: #e0e0e0;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.editcar-container h1 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #a8c7ff;
+}
+
+
+
+.editcar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.editcar-form label {
+    text-align: left;
+    font-weight: 500;
+    color: #cfd9f1;
+}
+
+
+.editcar-form input,
+.editcar-form select {
+    padding: 10px 12px;
+    background: #2b2b2b;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: 0.25s ease;
+}
+
+.editcar-form input:focus,
+.editcar-form select:focus {
+    outline: none;
+    border-color: #0078ff;
+    box-shadow: 0 0 6px rgba(0, 120, 255, 0.4);
+}
+
+
+
+.editcar-form .primary-btn {
+    margin-top: 12px;
+    padding: 12px 18px;
+    background: #0078ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.editcar-form .primary-btn:hover {
+    background: #0a8aff;
+    box-shadow: 0 0 10px rgba(0, 120, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.editcar-form .back-btn {
+    margin-top: 8px;
+    padding: 10px 16px;
+    background: #3a3a3a;
+    color: #ddd;
+    border: 1px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.editcar-form .back-btn:hover {
+    background: #4a4a4a;
+    border-color: #0078ff;
+    color: #a8c7ff;
 }

@@ -14,7 +14,6 @@ export default function CarForm() {
     ) => {
         const { name, value } = e.target;
 
-        // Pola numeryczne
         const numericFields = [
             "doorsNumber",
             "luggageCapacity",

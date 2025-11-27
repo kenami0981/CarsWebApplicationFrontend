@@ -1,11 +1,9 @@
-/* -------------------------------------- */
-/*              CONTAINER                 */
-/* -------------------------------------- */
+
 
 .addcar-container {
     max-width: 500px;
     margin: 40px auto;
-    background: #1f1f1f;
+    background: #2a2a2a;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
@@ -21,9 +19,6 @@
     color: #a8c7ff;
 }
 
-/* -------------------------------------- */
-/*                  FORM                  */
-/* -------------------------------------- */
 
 .addcar-form {
     display: flex;
@@ -37,7 +32,6 @@
     color: #cfd9f1;
 }
 
-/* INPUTS & SELECTS */
 
 .addcar-form input,
 .addcar-form select {
@@ -57,9 +51,6 @@
     box-shadow: 0 0 6px rgba(0, 120, 255, 0.4);
 }
 
-/* -------------------------------------- */
-/*                BUTTONS                 */
-/* -------------------------------------- */
 
 .primary-btn {
     margin-top: 12px;

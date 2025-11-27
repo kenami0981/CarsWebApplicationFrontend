@@ -112,8 +112,9 @@ export default function CarDetails() {
                 </>
             ) : (
                 <>
+                <div className="editcar-container">
                     <h2>Edit Car</h2>
-
+<div className="editcar-form">
                     <label>Brand:</label>
                     <input
                         type="text"
@@ -196,10 +197,11 @@ export default function CarDetails() {
                     </select>
 
                     <br /><br />
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={() => setIsEditing(false)} style={{ marginLeft: "10px" }}>
-                        Cancel
-                    </button>
+                    
+        <button className="primary-btn" onClick={handleSave}>Save</button>
+        <button className="back-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+    </div>
+    </div>
                 </>
             )}
 
