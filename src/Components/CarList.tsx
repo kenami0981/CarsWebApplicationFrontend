@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "../Styles/CarList.css";
 import { Car, FuelTypeMap } from "../Models/Car";
-import axios from 'axios';
 import { Link } from "react-router-dom";
+import api from "../API/axios";
 export default function CarList() {
     
     const [cars, setCars] = useState<Car[]>([]);
@@ -10,16 +10,21 @@ export default function CarList() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setLoading(true);
-        axios.get<Car[]>('https://localhost:7290/api/cars/').then((response) => {
-            setCars(response.data);
-        })
-        .catch(() => {
-            setError('Error fetching cars');
-        })
-        .then(() => setLoading(false))
-        .catch(() => setLoading(false));
-    },[]);
+  const fetchCars = async () => {
+    setLoading(true);
+    try {
+      const response = await api.get<Car[]>("/cars");
+      setCars(response.data);
+    } catch {
+      setError("Error fetching cars");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchCars();
+}, []);
+
     if (loading) return <p>Loading cars...</p>;
     if (error) return <p>{error}</p>;
     return (

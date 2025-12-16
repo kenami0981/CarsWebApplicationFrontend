@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import { BodyType, BodyTypeMap, Car, FuelType, FuelTypeMap } from "../Models/Car";
+import api from "../API/axios";
+import { BodyTypeMap, Car, FuelTypeMap } from "../Models/Car";
 import "../Styles/CarDetails.css"
 
 export default function CarDetails() {
@@ -19,52 +19,71 @@ export default function CarDetails() {
 
 
     useEffect(() => {
-        axios.get<Car>(`https://localhost:7290/api/cars/${id}`)
-            .then(res => {
-                setCar(res.data);
-                setFormData({
-    brand: res.data.brand,
-    model: res.data.model,
-    doorsNumber: res.data.doorsNumber,
-    luggageCapacity: res.data.luggageCapacity,
-    engineCapacity: res.data.engineCapacity,
-    fuelType: res.data.fuelType,     
-    productionDate: res.data.productionDate,
-    carFuelConsumption: res.data.carFuelConsumption,
-    bodyType: res.data.bodyType     
-});
-            })
-            .catch(() => setError("Error loading car details"))
-            .then(() => setLoading(false)) .catch(() => setLoading(false));
-    }, [id]);
+  const fetchCar = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get<Car>(`/cars/${id}`);
+      setCar(res.data);
+      setFormData({
+        brand: res.data.brand,
+        model: res.data.model,
+        doorsNumber: res.data.doorsNumber,
+        luggageCapacity: res.data.luggageCapacity,
+        engineCapacity: res.data.engineCapacity,
+        fuelType: res.data.fuelType,
+        productionDate: res.data.productionDate,
+        carFuelConsumption: res.data.carFuelConsumption,
+        bodyType: res.data.bodyType
+      });
+    } catch {
+      setError("Error loading car details");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchCar();
+}, [id]);
+
 
     const handleDelete = async () => {
         if (!window.confirm("Are you sure you want to delete this car?")) return;
 
         try {
-            await axios.delete(`https://localhost:7290/api/cars/${id}`);
+            await api.delete(`/cars/${id}`);
             navigate("/cars");
         } catch {
             alert("Failed to delete car");
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]:
-                name === "fuelType" || name === "bodyType"
-                    ? Number(value) // konwersja string → number
-                    : value
-        }));
+    const numberFields = [
+  "doorsNumber",
+  "luggageCapacity",
+  "engineCapacity",
+  "carFuelConsumption"
+];
+
+    const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+    const { name, value } = e.target;
+
+    setFormData(prev => ({
+        ...prev,
+        [name]:
+        name === "fuelType" || name === "bodyType" || numberFields.includes(name)
+            ? Number(value)
+            : value
+    }));
     };
+
 
     const handleSave = async () => {
         
 
         try {
-            await axios.put(`https://localhost:7290/api/cars/${id}`, formData);
+            await api.put(`/cars/${id}`, formData);
             alert("Car updated!");
             setCar(formData as unknown as Car);
             setIsEditing(false);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../API/axios";
 import { Car } from "../Models/Car";
 import "../Styles/CarForm.css";
 
@@ -33,7 +33,7 @@ export default function CarForm() {
         e.preventDefault();
 
         try {
-            await axios.post("https://localhost:7290/api/cars", formData);
+            await api.post("/cars", formData);
             navigate("/cars");
         } catch (error) {
             console.error(error);

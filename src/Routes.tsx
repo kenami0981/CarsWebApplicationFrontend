@@ -4,6 +4,7 @@ import CarList from "./Components/CarList";
 import CarDetails from "./Components/CarDetails";
 import NotFound from "./Components/NotFound";
 import CarForm from "./Components/CarForm";
+import Login from "./Components/Login";
 
 export const routes: RouteObject[] = [
     {
@@ -15,7 +16,9 @@ export const routes: RouteObject[] = [
             {path: 'edit/:id', element: <CarForm />},
             {path: 'add-car', element: <CarForm />},
             {path: 'not-found', element: <NotFound />},
+            {path: 'login', element: <Login/>},
             {path: '*', element: <Navigate replace to='/not-found' />}
+
 
         ]
     }
