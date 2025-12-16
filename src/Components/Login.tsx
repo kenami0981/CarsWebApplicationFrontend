@@ -1,21 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../API/axios";
 import { User } from "../Models/User";
+import { useAuth } from "../Context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
 
   const submit = async () => {
-    const response = await api.post<User>("/account/login", {
-      email,
-      password,
-    });
+    try {
+      const response = await api.post<User>("/account/login", {
+        email,
+        password,
+      });
 
-    const user = response.data;
+      // zapis usera + tokenu w kontekście
+      login(response.data);
 
-    localStorage.setItem("jwt", user.token);
-    console.log(user.userName);
+      // 👉 PRZEJŚCIE DO /cars
+      navigate("/cars");
+    } catch (error) {
+      alert("Nieprawidłowy email lub hasło");
+    }
   };
 
   return (
