@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../API/axios";
 import { User } from "../Models/User";
 import { useAuth } from "../Context/AuthContext";
+import "../Styles/Login.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -14,7 +15,8 @@ export default function Register() {
   const [userName, setUserName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const submit = async () => {
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
 
     try {
@@ -25,10 +27,10 @@ export default function Register() {
         userName,
       });
 
-      // zapis usera + tokenu
+      // zapis usera + tokenu w kontekście
       login(response.data);
 
-      // 👉 po rejestracji od razu do /cars
+      // 👉 po rejestracji przejście do /cars
       navigate("/cars");
     } catch (error: any) {
       if (error.response?.data?.errors) {
@@ -46,36 +48,54 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="auth-container">
+      <h1>Register</h1>
 
-      <input
-        placeholder="Display name"
-        value={displayName}
-        onChange={e => setDisplayName(e.target.value)}
-      />
+      <form onSubmit={submit} className="auth-form">
+        <label>Display name:</label>
+        <input
+          value={displayName}
+          onChange={e => setDisplayName(e.target.value)}
+          required
+        />
 
-      <input
-        placeholder="Username"
-        value={userName}
-        onChange={e => setUserName(e.target.value)}
-      />
+        <label>Username:</label>
+        <input
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+          required
+        />
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+        />
 
-      <button onClick={submit} disabled={loading}>
-        {loading ? "Registering..." : "Register"}
+        <button
+          type="submit"
+          className="primary-btn"
+          disabled={loading}
+        >
+          {loading ? "Registering..." : "Register"}
+        </button>
+      </form>
+
+      <button
+        className="back-btn"
+        onClick={() => navigate("/login")}
+      >
+        Back to login
       </button>
     </div>
   );
