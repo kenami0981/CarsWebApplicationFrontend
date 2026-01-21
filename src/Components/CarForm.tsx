@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import api from "../API/axios";
 import { Car } from "../Models/Car";
 import "../Styles/CarForm.css";
+import { useAuth } from "../Context/AuthContext";
 
 export default function CarForm() {
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState<Partial<Car>>({});
-
+    if (!user) {
+    return <Navigate to="/login" replace />;
+  }
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
